@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Bellavista Alto, barrio de Cuenca junto al Parque Libertad. Noticias, eventos y reservas de la sala comunal por WhatsApp." />
+  <title>Bellavista Alto | Parque Libertad</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #7a5c2e;
+      --brand-2: #a07b42;
+      --accent: #0f766e;
+      --line: #e7ddd0;
+      --shadow: 0 12px 30px rgba(31, 41, 55, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #fffdf9 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 244, 239, .86);
+      border-bottom: 1px solid rgba(231, 221, 208, .8);
+    }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; padding: 16px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .logo {
+      width: 42px; height: 42px; border-radius: 14px;
+      display: grid; place-items: center; color: white;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: var(--shadow);
+    }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-size: 14px; color: var(--muted); }
+    nav a:hover { color: var(--brand); }
+
+    .hero { padding: 42px 0 24px; }
+    .grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: stretch;
+    }
+    .panel, .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-copy { padding: 30px; }
+    .eyebrow {
+      display: inline-flex; gap: 8px; align-items: center;
+      padding: 8px 12px; border-radius: 999px; background: #f1e7d8; color: var(--brand);
+      font-size: 13px; font-weight: 700;
+    }
+    h1 { margin: 16px 0 12px; font-size: clamp(34px, 5vw, 56px); line-height: 1.02; }
+    .lead { color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 58ch; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 18px; border-radius: 14px; font-weight: 700; border: 1px solid transparent;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); color: white; }
+    .btn.secondary { background: #fff; border-color: var(--line); color: var(--text); }
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px;
+    }
+    .stat { padding: 16px; border-radius: 18px; background: #fbf8f3; border: 1px solid var(--line); }
+    .stat strong { display: block; font-size: 24px; margin-bottom: 4px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .hero-side { padding: 22px; display: grid; gap: 14px; }
+    .hero-photo {
+      min-height: 220px; border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(15, 118, 110, .12), rgba(15, 118, 110, .25)),
+        radial-gradient(circle at top right, rgba(160, 123, 66, .55), transparent 45%),
+        linear-gradient(135deg, #d9c29b, #f5ead8 45%, #d8e6df);
+      display: grid; place-items: end start;
+      padding: 18px; color: #0f172a;
+    }
+    .photo-label {
+      background: rgba(255,255,255,.8); backdrop-filter: blur(8px);
+      padding: 10px 12px; border-radius: 14px; font-size: 13px; border: 1px solid rgba(255,255,255,.65);
+    }
+    .mini-list { display: grid; gap: 10px; }
+    .mini-item {
+      padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: #fff;
+    }
+    .mini-item strong { display: block; margin-bottom: 4px; }
+    .mini-item span { color: var(--muted); font-size: 14px; }
+
+    section { padding: 18px 0 8px; }
+    .section-title { margin: 0 0 14px; font-size: 26px; }
+    .section-sub { margin: -6px 0 18px; color: var(--muted); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { padding: 20px; }
+    .badge {
+      display: inline-flex; padding: 6px 10px; border-radius: 999px;
+      background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700;
+    }
+    .card h3 { margin: 12px 0 8px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.55; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .timeline { display: grid; gap: 12px; }
+    .event {
+      display: grid; grid-template-columns: 100px 1fr; gap: 14px; align-items: center;
+      padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: #fff;
+    }
+    .datebox {
+      border-radius: 14px; background: #f5efe7; color: var(--brand);
+      text-align: center; padding: 10px 8px; font-weight: 800;
+    }
+    .datebox small { display: block; color: var(--muted); font-weight: 600; }
+    .event p { margin: 4px 0 0; color: var(--muted); }
+
+    form { display: grid; gap: 12px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    label { font-size: 14px; font-weight: 700; display: block; margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: 14px;
+      padding: 13px 14px; font: inherit; background: #fff;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .note {
+      font-size: 13px; color: var(--muted); line-height: 1.5; background: #faf7f2;
+      border: 1px dashed #dfd2c0; padding: 12px 14px; border-radius: 14px;
+    }
+    .reservation-box { display: grid; gap: 12px; }
+    .result {
+      display: none; padding: 14px; border-radius: 16px; background: #effaf7; border: 1px solid #b8e7da;
+      color: #065f46;
+    }
+
+    footer {
+      padding: 30px 0 42px; color: var(--muted); font-size: 14px;
+    }
+    .footer-card {
+      padding: 18px 20px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,.8);
+    }
+
+    @media (max-width: 900px) {
+      .grid, .cards, .two-col, .field-grid, .stats { grid-template-columns: 1fr; }
+      nav { display: none; }
+      .hero { padding-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <div class="brand">
+        <div class="logo">B</div>
+        <div>
+          <div>Bellavista Alto</div>
+          <small style="color:var(--muted);font-weight:600;">Parque Libertad · Cuenca</small>
+        </div>
+      </div>
+      <nav>
+        <a href="#barrio">Barrio</a>
+        <a href="#noticias">Noticias</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#reserva">Reserva</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="grid">
+        <div class="panel hero-copy">
+          <span class="eyebrow">🌿 Comunidad viva junto al Parque Libertad</span>
+          <h1>Un sitio para destacar Bellavista Alto y ordenar la vida del barrio.</h1>
+          <p class="lead">
+            Noticias, eventos, avisos y reservas de la sala comunal en un solo lugar.
+            Pensado para funcionar fácil desde GitHub Pages y resolver rápido por WhatsApp.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#reserva">Reservar por WhatsApp</a>
+            <a class="btn secondary" href="#noticias">Ver noticias</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>1 sitio</strong><span>para barrio + sala comunal</span></div>
+            <div class="stat"><strong>0 backend</strong><span>simple y barato</span></div>
+            <div class="stat"><strong>100% móvil</strong><span>pensado para WhatsApp</span></div>
+          </div>
+        </div>
+        <aside class="panel hero-side">
+          <div class="hero-photo">
+            <div class="photo-label">
+              <strong>Parque Libertad</strong><br />
+              Espacio central del barrio, ideal para identidad, eventos y encuentro.
+            </div>
+          </div>
+          <div class="mini-list">
+            <div class="mini-item"><strong>Comunicación</strong><span>Avisos, reuniones y coordinación vecinal.</span></div>
+            <div class="mini-item"><strong>Eventos</strong><span>Actividades del barrio con calendario simple.</span></div>
+            <div class="mini-item"><strong>Reservas</strong><span>Solicitud directa de sala comunal por WhatsApp.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="barrio">
+      <h2 class="section-title">El barrio, en una sola pantalla</h2>
+      <p class="section-sub">Una base clara para informar, conectar y hacer visible a Bellavista Alto.</p>
+      <div class="cards">
+        <article class="card">
+          <span class="badge">Identidad</span>
+          <h3>Resaltar Bellavista Alto</h3>
+          <p>Historia, fotos, ubicación y lo que hace especial al barrio alrededor del Parque Libertad.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Participación</span>
+          <h3>Vecinos informados</h3>
+          <p>Un canal claro para noticias, avisos urgentes, reuniones y sugerencias de la comunidad.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Gestión</span>
+          <h3>Reservas simples</h3>
+          <p>Solicitudes de uso de la sala comunal con mensaje preparado automáticamente para WhatsApp.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="noticias" class="two-col">
+      <div>
+        <h2 class="section-title">Noticias y avisos</h2>
+        <p class="section-sub">Espacio para actualizaciones del barrio sin complicarlo.</p>
+        <div class="timeline">
+          <div class="event">
+            <div class="datebox">Hoy<small>Aviso</small></div>
+            <div><strong>Se habilita el canal de comunicación del barrio</strong><p>Para compartir novedades, convocatorias y anuncios importantes.</p></div>
+          </div>
+          <div class="event">
+            <div class="datebox">Semana<small>Evento</small></div>
+            <div><strong>Actividad vecinal en el Parque Libertad</strong><p>Ideal para reuniones, mingas, celebraciones o jornadas comunitarias.</p></div>
+          </div>
+          <div class="event">
+            <div class="datebox">Mes<small>Info</small></div>
+            <div><strong>Reservas de la sala comunal</strong><p>La solicitud se envía por WhatsApp para coordinar más rápido con la directiva.</p></div>
+          </div>
+        </div>
+      </div>
+      <div id="eventos">
+        <h2 class="section-title">Eventos del barrio</h2>
+        <p class="section-sub">Un calendario simple para que nadie se entere tarde.</p>
+        <div class="card">
+          <h3>Ideas para publicar aquí</h3>
+          <p>Reuniones barriales, mingas, ferias, actividades infantiles, fechas cívicas, campañas de limpieza y uso de la sala comunal.</p>
+          <div style="height:14px"></div>
+          <div class="note">Si luego quieren crecer, este bloque puede evolucionar a calendario real sin cambiar toda la web.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserva">
+      <h2 class="section-title">Reserva de sala comunal por WhatsApp</h2>
+      <p class="section-sub">Sin backend. El formulario arma el mensaje y abre WhatsApp con los datos listos.</p>
+      <div class="card reservation-box">
+        <form id="reserveForm">
+          <div class="field-grid">
+            <div>
+              <label for="name">Nombre y apellido</label>
+              <input id="name" name="name" placeholder="Ej. Juan Pérez" required />
+            </div>
+            <div>
+              <label for="phone">Tu número</label>
+              <input id="phone" name="phone" placeholder="Ej. 0987654321" required />
+            </div>
+          </div>
+          <div class="field-grid">
+            <div>
+              <label for="date">Fecha de uso</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div>
+              <label for="time">Hora aproximada</label>
+              <input id="time" name="time" type="time" required />
+            </div>
+          </div>
+          <div class="field-grid">
+            <div>
+              <label for="duration">Duración</label>
+              <select id="duration" name="duration">
+                <option>1 hora</option>
+                <option>2 horas</option>
+                <option>Medio día</option>
+                <option>Jornada completa</option>
+              </select>
+            </div>
+            <div>
+              <label for="people">Cantidad de personas</label>
+              <input id="people" name="people" type="number" min="1" placeholder="Ej. 25" />
+            </div>
+          </div>
+          <div>
+            <label for="reason">Motivo de la reserva</label>
+            <textarea id="reason" name="reason" placeholder="Ej. reunión barrial, cumpleaños, capacitación, evento comunitario..."></textarea>
+          </div>
+          <div class="note">
+            La reserva final se confirma por WhatsApp. Aquí no se guarda nada en una base de datos.
+          </div>
+          <div class="cta-row">
+            <button class="btn primary" type="submit">Abrir WhatsApp</button>
+            <a class="btn secondary" href="#contacto">Ver contacto del barrio</a>
+          </div>
+          <div id="result" class="result"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="contacto" class="two-col">
+      <div class="card">
+        <h2 class="section-title" style="margin-top:0;">Contacto y canal directo</h2>
+        <p class="section-sub">Editar estos datos cuando la directiva confirme los oficiales.</p>
+        <p><strong>Directiva del barrio:</strong> pendiente de completar</p>
+        <p><strong>WhatsApp principal:</strong> +593 99 999 9999</p>
+        <p><strong>Ubicación:</strong> Parque Libertad, Bellavista Alto, Cuenca</p>
+      </div>
+      <div class="card">
+        <h2 class="section-title" style="margin-top:0;">Sugerencias para crecer después</h2>
+        <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
+          <li>Agregar galería con fotos reales del barrio.</li>
+          <li>Crear sección de negocios o servicios locales.</li>
+          <li>Publicar actas o avisos importantes en PDF.</li>
+          <li>Sumar un mapa con puntos de interés.</li>
+          <li>Pasar a calendario dinámico si el uso crece.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-card">
+        Bellavista Alto · Parque Libertad · Cuenca, Ecuador · Sitio estático listo para GitHub Pages.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = "593999999999"; // Reemplaza con el número real del barrio
+
+    const form = document.getElementById('reserveForm');
+    const result = document.getElementById('result');
+
+    function formatDate(value) {
+      if (!value) return '';
+      const date = new Date(value + 'T00:00:00');
+      return new Intl.DateTimeFormat('es-EC', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      }).format(date);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const duration = document.getElementById('duration').value;
+      const people = document.getElementById('people').value.trim();
+      const reason = document.getElementById('reason').value.trim();
+
+      const message = [
+        'Hola, quiero reservar la sala comunal de Bellavista Alto.',
+        `Nombre: ${name}`,
+        `Teléfono: ${phone}`,
+        `Fecha: ${formatDate(date)}`,
+        `Hora: ${time}`,
+        `Duración: ${duration}`,
+        people ? `Personas: ${people}` : null,
+        reason ? `Motivo: ${reason}` : null,
+        '',
+        'Quedo atento a la confirmación.'
+      ].filter(Boolean).join('\n');
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      result.style.display = 'block';
+      result.textContent = 'Mensaje listo. Abriendo WhatsApp...';
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>
