@@ -34,10 +34,14 @@ La web no guarda reservas en una base de datos. En cambio, el usuario llena un f
 - Rápido de mantener.
 - Perfecto para validar si el barrio realmente lo usa.
 
-## Próximo paso recomendado
-Publicar una primera versión con:
+## Estructura pública elegida
+La versión pública del sitio debe mostrar solo:
 1. Portada
-2. Noticias
+2. Noticias y avisos
 3. Eventos
-4. Reserva por WhatsApp
-5. Contacto del barrio
+4. Información de la sala comunal
+5. Reserva por WhatsApp
+6. Contacto del barrio
+
+## Roadmap
+Las ideas de crecimiento futuro se mantienen separadas en `ROADMAP.md` para no mezclarlas con la versión pública base.
