@@ -7,24 +7,30 @@
   <title>Bellavista Alto | Avisos y sala comunal</title>
   <style>
     :root {
-      --bg: #f7f2ea;
-      --surface: rgba(255,255,255,.86);
+      --bg: #f6efe6;
+      --bg-soft: #fcf8f3;
+      --surface: rgba(255,255,255,.82);
       --card: #ffffff;
-      --text: #1f2937;
-      --muted: #667085;
-      --brand: #6f4e37;
-      --brand-strong: #4d3427;
-      --accent: #176b5c;
-      --accent-soft: #dff3ee;
-      --warm: #efe1cf;
-      --line: #e8ddd1;
-      --danger-soft: #fff1f0;
-      --danger-line: #f3c9c4;
-      --shadow: 0 16px 40px rgba(34, 34, 34, .08);
-      --radius-xl: 26px;
-      --radius-lg: 20px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
+      --text: #21303c;
+      --muted: #647181;
+      --brand: #6d4b33;
+      --brand-strong: #483124;
+      --brand-soft: #efe2d4;
+      --accent: #1d6f61;
+      --accent-strong: #145448;
+      --accent-soft: #def0eb;
+      --line: #e6d9cc;
+      --line-strong: #d9cab8;
+      --notice-bg: #fff4f2;
+      --notice-line: #efc9c2;
+      --shadow-lg: 0 26px 70px rgba(33, 48, 60, .10);
+      --shadow-md: 0 14px 36px rgba(33, 48, 60, .08);
+      --shadow-sm: 0 8px 20px rgba(33, 48, 60, .05);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --radius-xs: 12px;
     }
 
     * { box-sizing: border-box; }
@@ -32,57 +38,83 @@
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, #fff9f2 0%, transparent 28%),
-        linear-gradient(180deg, #fdfaf5 0%, var(--bg) 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.95) 0%, transparent 22%),
+        radial-gradient(circle at top right, rgba(222,240,235,.7) 0%, transparent 20%),
+        linear-gradient(180deg, #fffaf5 0%, var(--bg) 100%);
     }
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1120px, calc(100% - 28px)); margin: 0 auto; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1160px, calc(100% - 28px)); margin: 0 auto; }
+
+    .top-ribbon {
+      background: linear-gradient(90deg, var(--brand-strong), var(--brand));
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
+    }
+    .top-ribbon .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+    .ribbon-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .ribbon-note strong { color: #fff; }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 30;
-      backdrop-filter: blur(14px);
-      background: rgba(253, 250, 245, .88);
-      border-bottom: 1px solid rgba(232, 221, 209, .92);
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: rgba(252, 248, 243, .84);
+      border-bottom: 1px solid rgba(230, 217, 204, .92);
     }
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
+      gap: 18px;
+      padding: 16px 0;
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       min-width: 0;
     }
     .logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
+      font-size: 20px;
       font-weight: 900;
       color: #fff;
-      background: linear-gradient(135deg, var(--brand), #9a7652);
-      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, var(--brand), #9c7350);
+      box-shadow: var(--shadow-md);
       flex: 0 0 auto;
     }
     .brand-title {
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.1;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.02em;
     }
     .brand-sub {
       display: block;
-      font-size: 13px;
+      margin-top: 4px;
       color: var(--muted);
-      margin-top: 3px;
+      font-size: 13px;
+      font-weight: 600;
     }
     nav {
       display: flex;
@@ -94,100 +126,146 @@
     nav a {
       font-size: 14px;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 700;
+      transition: color .15s ease;
     }
     nav a:hover { color: var(--brand-strong); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: var(--shadow-sm);
+    }
 
-    main { padding: 26px 0 48px; }
-    section { padding: 12px 0; }
+    main { padding: 28px 0 52px; }
+    section { padding: 14px 0; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.1fr .9fr;
       gap: 20px;
       align-items: stretch;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
-    .panel, .card {
-      background: var(--card);
+    .panel, .card, .glass {
       border: 1px solid var(--line);
+      background: rgba(255,255,255,.88);
+      box-shadow: var(--shadow-lg);
       border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
     }
     .hero-copy {
-      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.96)),
-        linear-gradient(135deg, rgba(239,225,207,.35), rgba(223,243,238,.35));
+        radial-gradient(circle at top left, rgba(239,226,212,.95), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.92));
+    }
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -60px;
+      top: -70px;
+      background: radial-gradient(circle, rgba(29,111,97,.12), transparent 70%);
+      border-radius: 999px;
+      pointer-events: none;
     }
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
+      padding: 8px 13px;
       border-radius: 999px;
-      background: var(--warm);
+      background: var(--brand-soft);
       color: var(--brand-strong);
       font-size: 13px;
       font-weight: 800;
+      position: relative;
+      z-index: 1;
     }
     h1 {
-      margin: 16px 0 12px;
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1.02;
-      letter-spacing: -.03em;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 5.3vw, 62px);
+      line-height: .98;
+      letter-spacing: -.04em;
+      position: relative;
+      z-index: 1;
+      max-width: 11ch;
     }
     .lead {
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--muted);
-      max-width: 56ch;
       margin: 0;
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
     }
     .cta-row {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
       margin-top: 24px;
+      position: relative;
+      z-index: 1;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      font-weight: 800;
       border: 1px solid transparent;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      border-radius: 16px;
+      padding: 15px 18px;
       cursor: pointer;
       font: inherit;
+      font-weight: 800;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(23,107,92,.12);
+      box-shadow: 0 12px 24px rgba(29,111,97,.12);
     }
-    .btn.primary { background: var(--accent); color: #fff; }
-    .btn.secondary { background: #fff; border-color: var(--line); color: var(--text); }
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn.secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--line);
+    }
 
-    .hero-highlights {
-      margin-top: 24px;
+    .hero-points {
+      margin-top: 26px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      position: relative;
+      z-index: 1;
     }
-    .hero-stat {
-      padding: 14px;
+    .hero-point {
+      padding: 16px;
       border-radius: var(--radius-md);
-      background: #fcfaf7;
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(230, 217, 204, .95);
+      box-shadow: var(--shadow-sm);
     }
-    .hero-stat strong {
+    .hero-point strong {
       display: block;
-      font-size: 14px;
       margin-bottom: 4px;
+      font-size: 14px;
     }
-    .hero-stat span {
+    .hero-point span {
+      display: block;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
@@ -197,91 +275,135 @@
       padding: 22px;
       display: grid;
       gap: 14px;
-      background: linear-gradient(180deg, #fffdf9 0%, #f7efe3 100%);
-    }
-    .local-visual {
-      min-height: 260px;
-      border-radius: 22px;
-      padding: 20px;
-      display: flex;
-      align-items: flex-end;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.06)),
-        radial-gradient(circle at top right, rgba(255,255,255,.65), transparent 30%),
-        linear-gradient(135deg, #a4d3c8 0%, #7ab2a4 26%, #d8c0a0 26%, #d8c0a0 52%, #eedfcf 52%, #eedfcf 100%);
+        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.9)),
+        linear-gradient(135deg, rgba(29,111,97,.06), rgba(109,75,51,.08));
+    }
+    .visual-stage {
+      min-height: 322px;
+      border-radius: 24px;
+      padding: 22px;
       position: relative;
       overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(135deg, #a7d5ca 0%, #7aa99d 24%, #dac6aa 24%, #dac6aa 52%, #f1e7db 52%, #f1e7db 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
     }
-    .local-visual::before,
-    .local-visual::after {
+    .visual-stage::before,
+    .visual-stage::after {
       content: "";
       position: absolute;
       border-radius: 999px;
       opacity: .45;
     }
-    .local-visual::before {
+    .visual-stage::before {
+      width: 220px;
+      height: 220px;
+      background: rgba(255,255,255,.24);
+      right: -40px;
+      top: -70px;
+    }
+    .visual-stage::after {
       width: 180px;
       height: 180px;
-      background: rgba(255,255,255,.22);
-      right: -30px;
-      top: -50px;
+      background: rgba(72,49,36,.1);
+      left: -30px;
+      bottom: -70px;
     }
-    .local-visual::after {
-      width: 140px;
-      height: 140px;
-      background: rgba(111,78,55,.14);
-      left: -20px;
-      bottom: -40px;
-    }
-    .visual-card {
+    .stage-grid {
       position: relative;
       z-index: 1;
-      max-width: 290px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(255,255,255,.7);
-      backdrop-filter: blur(10px);
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-content: space-between;
     }
-    .visual-card strong { display: block; margin-bottom: 6px; }
-    .visual-card span { color: #435160; font-size: 14px; line-height: 1.45; }
-
-    .alert-card {
+    .floating-card {
+      align-self: start;
+      padding: 14px 15px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: var(--shadow-sm);
+    }
+    .floating-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .floating-card span {
+      display: block;
+      color: #42525f;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .floating-card.right { align-self: end; }
+    .hero-note {
       padding: 16px;
       border-radius: var(--radius-lg);
-      border: 1px solid var(--danger-line);
-      background: var(--danger-soft);
+      border: 1px solid var(--notice-line);
+      background: var(--notice-bg);
     }
-    .alert-card strong {
+    .hero-note strong {
       display: block;
       margin-bottom: 6px;
       font-size: 15px;
     }
-    .alert-card p {
+    .hero-note p {
       margin: 0;
-      color: #6e4b44;
+      color: #78554e;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
+    .section-shell {
+      padding: 8px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35));
+      box-shadow: var(--shadow-sm);
+    }
+    .section-card {
+      padding: 26px;
+      border-radius: 26px;
+      border: 1px solid rgba(230,217,204,.95);
+      background: rgba(255,255,255,.84);
+      box-shadow: var(--shadow-md);
+    }
     .section-head {
       display: flex;
       justify-content: space-between;
       align-items: end;
       gap: 16px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+    }
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f7f1e9;
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
     }
     .section-title {
       margin: 0;
-      font-size: clamp(26px, 4vw, 34px);
-      line-height: 1.08;
-      letter-spacing: -.02em;
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.06;
+      letter-spacing: -.03em;
     }
     .section-sub {
       margin: 6px 0 0;
+      max-width: 66ch;
       color: var(--muted);
-      max-width: 64ch;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .quick-grid,
@@ -290,7 +412,8 @@
     .events-grid,
     .contact-grid,
     .reserve-grid,
-    .about-grid {
+    .about-grid,
+    .closing-grid {
       display: grid;
       gap: 16px;
     }
@@ -299,126 +422,195 @@
     .news-grid,
     .contact-grid,
     .reserve-grid,
-    .about-grid { grid-template-columns: repeat(2, 1fr); }
-    .events-grid { grid-template-columns: 1.1fr .9fr; }
+    .about-grid,
+    .closing-grid { grid-template-columns: repeat(2, 1fr); }
+    .events-grid { grid-template-columns: 1.15fr .85fr; }
 
     .card {
       padding: 24px;
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow-md);
+    }
+    .tint-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.88)),
+        linear-gradient(135deg, rgba(239,226,212,.28), rgba(222,240,235,.24));
     }
     .quick-card {
+      position: relative;
+      overflow: hidden;
       padding: 22px 20px;
       border-radius: var(--radius-lg);
-      background: var(--surface);
       border: 1px solid var(--line);
-      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.88);
+      box-shadow: var(--shadow-md);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .quick-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 36px rgba(33,48,60,.10);
+    }
+    .quick-card::after {
+      content: "→";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      color: var(--brand);
+      font-weight: 900;
+      opacity: .55;
     }
     .quick-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 20px;
+      background: linear-gradient(135deg, var(--accent-soft), #eef8f5);
+      color: var(--accent-strong);
+      font-size: 21px;
+      box-shadow: inset 0 0 0 1px rgba(29,111,97,.08);
     }
-    .quick-card strong { font-size: 17px; }
-    .quick-card p {
+    .quick-card strong {
+      display: block;
+      font-size: 17px;
+    }
+    .quick-card p,
+    .notice-meta,
+    .event-item p,
+    .mini-item p,
+    .faq-item p,
+    .rule-item p,
+    .step p,
+    .muted,
+    .timeline-item p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.55;
       font-size: 14px;
+      line-height: 1.6;
     }
 
     .notice-list,
+    .mini-stack,
+    .faq-list,
     .steps,
     .rule-list,
-    .faq-list,
-    .mini-stack {
+    .timeline,
+    .contact-list {
       display: grid;
       gap: 12px;
     }
     .notice-item,
-    .faq-item,
-    .step,
-    .rule-item,
-    .mini-item,
     .event-item,
-    .news-item {
+    .mini-item,
+    .faq-item,
+    .rule-item,
+    .timeline-item,
+    .contact-item {
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      background: #fff;
+      background: rgba(255,255,255,.92);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
     }
-    .notice-item,
-    .faq-item,
-    .rule-item,
-    .mini-item,
-    .event-item,
-    .news-item { padding: 16px; }
     .notice-item strong,
-    .faq-item strong,
     .event-item strong,
-    .news-item strong,
-    .mini-item strong { display: block; margin-bottom: 6px; }
-    .notice-meta,
-    .news-meta,
-    .muted {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-    .notice-badge {
+    .mini-item strong,
+    .faq-item strong,
+    .rule-item strong,
+    .timeline-item strong,
+    .contact-item strong { display: block; margin-bottom: 6px; }
+    .notice-badge,
+    .event-badge {
       display: inline-flex;
       align-items: center;
-      padding: 4px 10px;
+      padding: 5px 10px;
       border-radius: 999px;
-      background: #f2f7f6;
-      color: var(--accent);
       font-size: 12px;
       font-weight: 800;
       margin-bottom: 8px;
     }
-
-    .empty-state {
+    .notice-badge {
+      background: #eef8f5;
+      color: var(--accent);
+    }
+    .event-badge {
+      background: #f8f1e8;
+      color: var(--brand);
+    }
+    .status-box {
       padding: 22px;
-      border: 1px dashed #d9c9b7;
+      border: 1px dashed var(--line-strong);
       border-radius: var(--radius-md);
-      background: #fbf7f1;
-      color: #6d6257;
-      line-height: 1.6;
+      background: linear-gradient(180deg, #fbf7f1, #faf3ea);
+      color: #6f655c;
+      line-height: 1.65;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .time-pill {
+      border-radius: 16px;
+      background: #f5eee5;
+      color: var(--brand-strong);
+      text-align: center;
+      padding: 10px 8px;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.2;
+      box-shadow: inset 0 0 0 1px rgba(109,75,51,.06);
+    }
+    .time-pill span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .reserve-panel {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.92)),
+        linear-gradient(135deg, rgba(239,226,212,.25), rgba(222,240,235,.22));
+      box-shadow: var(--shadow-md);
+    }
+    .reserve-panel h3,
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: -.01em;
     }
 
     .step {
       display: grid;
-      grid-template-columns: 42px 1fr;
+      grid-template-columns: 44px 1fr;
       gap: 14px;
-      padding: 16px;
       align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow-sm);
     }
     .step-num {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      background: var(--warm);
+      background: var(--brand-soft);
       color: var(--brand-strong);
       font-weight: 900;
     }
-    .step p, .rule-item p, .faq-item p, .event-item p, .news-item p, .mini-item p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    .rule-item {
-      background: #fcfaf7;
-    }
-    .rule-item strong { display: block; margin-bottom: 6px; }
 
     form { display: grid; gap: 12px; }
     .field-grid {
@@ -435,23 +627,28 @@
     input, select, textarea {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 13px 14px;
       font: inherit;
-      background: #fff;
       color: var(--text);
+      background: #fff;
+      transition: border-color .15s ease, box-shadow .15s ease;
     }
-    textarea { min-height: 120px; resize: vertical; }
+    textarea {
+      min-height: 124px;
+      resize: vertical;
+    }
     input:focus, select:focus, textarea:focus {
-      outline: 2px solid rgba(23,107,92,.18);
-      border-color: rgba(23,107,92,.35);
+      outline: none;
+      border-color: rgba(29,111,97,.45);
+      box-shadow: 0 0 0 4px rgba(29,111,97,.10);
     }
     .note {
       padding: 14px 16px;
       border-radius: var(--radius-md);
-      background: #f9f6f1;
-      border: 1px dashed #d9c9b7;
-      color: #6b6258;
+      background: #f8f4ee;
+      border: 1px dashed var(--line-strong);
+      color: #6d635a;
       font-size: 14px;
       line-height: 1.6;
     }
@@ -459,26 +656,68 @@
       display: none;
       padding: 14px 16px;
       border-radius: var(--radius-md);
-      background: #eef9f5;
-      border: 1px solid #b7e2d5;
-      color: #0f5e50;
+      background: #eef8f4;
+      border: 1px solid #b5dfd1;
+      color: #0f5f51;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.55;
+    }
+
+    .info-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .info-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--brand));
+      opacity: .9;
+    }
+    .info-card strong { display: block; margin-bottom: 10px; font-size: 18px; }
+
+    .closing-cta {
+      padding: 26px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(109,75,51,.96), rgba(72,49,36,.96)),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      color: #fff;
+      box-shadow: var(--shadow-lg);
+    }
+    .closing-cta h3 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 4vw, 32px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+    .closing-cta p {
+      margin: 0;
+      color: rgba(255,255,255,.82);
+      line-height: 1.7;
+    }
+    .closing-cta .btn.secondary {
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.18);
+      color: #fff;
     }
 
     footer {
-      padding: 18px 0 48px;
+      padding: 16px 0 50px;
       color: var(--muted);
       font-size: 14px;
     }
     .footer-card {
       padding: 18px 20px;
-      border-radius: 18px;
+      border-radius: 20px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.84);
+      box-shadow: var(--shadow-sm);
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1020px) {
       .hero,
       .quick-grid,
       .info-grid,
@@ -487,18 +726,41 @@
       .contact-grid,
       .reserve-grid,
       .about-grid,
+      .closing-grid,
       .field-grid,
-      .hero-highlights {
+      .hero-points {
         grid-template-columns: 1fr;
       }
       nav { display: none; }
       .hero-copy,
       .hero-side,
-      .card { padding: 22px; }
+      .section-card,
+      .card,
+      .reserve-panel,
+      .closing-cta { padding: 22px; }
+    }
+
+    @media (max-width: 640px) {
+      .top-ribbon .wrap,
+      .topbar,
+      .section-head,
+      .cta-row { align-items: flex-start; }
+      .topbar { padding: 14px 0; }
+      h1 { max-width: 100%; font-size: clamp(34px, 12vw, 48px); }
+      .timeline-item { grid-template-columns: 1fr; }
+      .time-pill { max-width: 92px; }
+      .nav-cta { display: none; }
     }
   </style>
 </head>
 <body>
+  <div class="top-ribbon">
+    <div class="wrap">
+      <div class="ribbon-note"><strong>Bellavista Alto</strong> · Canal informativo del barrio y de la sala comunal del Parque Libertad.</div>
+      <div class="ribbon-note">WhatsApp principal pendiente de reemplazar por el oficial.</div>
+    </div>
+  </div>
+
   <header>
     <div class="wrap topbar">
       <div class="brand">
@@ -510,10 +772,12 @@
       </div>
       <nav>
         <a href="#avisos">Avisos</a>
-        <a href="#accesos">Accesos rápidos</a>
-        <a href="#reserva">Reservar sala</a>
+        <a href="#accesos">Accesos</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#reserva">Sala comunal</a>
         <a href="#info">Información útil</a>
         <a href="#contacto">Contacto</a>
+        <a class="nav-cta" href="#reserva">Reservar sala</a>
       </nav>
     </div>
   </header>
@@ -522,76 +786,83 @@
     <section class="hero">
       <div class="panel hero-copy">
         <span class="eyebrow">🌿 Sitio informativo del barrio</span>
-        <h1>Avisos importantes, contacto y reserva de la sala comunal.</h1>
+        <h1>Un punto claro para avisos, contacto y reservas.</h1>
         <p class="lead">
-          Bellavista Alto reúne aquí lo más útil para los vecinos: comunicados del barrio,
-          próximos eventos y la solicitud de uso de la sala comunal del Parque Libertad.
+          Bellavista Alto reúne aquí lo más útil para los vecinos: comunicados importantes,
+          próximos encuentros del barrio y la solicitud de uso de la sala comunal del Parque Libertad.
         </p>
         <div class="cta-row">
           <a class="btn primary" href="#reserva">Reservar sala comunal</a>
           <a class="btn secondary" href="#avisos">Ver avisos importantes</a>
         </div>
-        <div class="hero-highlights">
-          <div class="hero-stat">
-            <strong>Avisos del barrio</strong>
-            <span>Comunicados, reuniones, mingas y novedades para la comunidad.</span>
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>Avisos reales</strong>
+            <span>Reuniones, mingas, seguridad, mantenimiento y novedades del barrio.</span>
           </div>
-          <div class="hero-stat">
-            <strong>Reserva por WhatsApp</strong>
-            <span>Solicitud simple con datos listos para enviar al contacto del barrio.</span>
+          <div class="hero-point">
+            <strong>Reserva simple</strong>
+            <span>Formulario claro con salida directa a WhatsApp para coordinar rápido.</span>
           </div>
-          <div class="hero-stat">
+          <div class="hero-point">
             <strong>Información útil</strong>
-            <span>Ubicación, reglas básicas y canales de atención en un solo lugar.</span>
+            <span>Ubicación, reglas básicas y canales oficiales en un solo lugar.</span>
           </div>
         </div>
       </div>
 
       <aside class="panel hero-side">
-        <div class="local-visual">
-          <div class="visual-card">
-            <strong>Parque Libertad y sala comunal</strong>
-            <span>
-              Este sitio está pensado para resolver lo básico rápido: ver avisos, ubicar el espacio y solicitar su uso.
-            </span>
+        <div class="visual-stage">
+          <div class="stage-grid">
+            <div class="floating-card">
+              <strong>Parque Libertad</strong>
+              <span>Centro de encuentro y referencia principal del barrio.</span>
+            </div>
+            <div class="floating-card right">
+              <strong>Sala comunal</strong>
+              <span>Solicitud rápida con datos completos y confirmación por WhatsApp.</span>
+            </div>
           </div>
         </div>
-        <div class="alert-card">
-          <strong>Importante</strong>
+        <div class="hero-note">
+          <strong>Cómo está pensado este sitio</strong>
           <p>
-            El sitio no guarda reservas en base de datos. La confirmación final de la sala comunal se coordina por WhatsApp con la directiva.
+            Primero lo urgente, luego los accesos rápidos y al final la información complementaria. La idea es que un vecino entienda todo en pocos segundos.
           </p>
         </div>
       </aside>
     </section>
 
-    <section id="avisos">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Lo importante hoy</h2>
-          <p class="section-sub">Aquí deben ir los avisos que realmente necesita ver un vecino al entrar.</p>
-        </div>
-      </div>
-      <div class="news-grid">
-        <div class="card">
-          <div class="notice-list">
-            <div class="notice-item">
-              <span class="notice-badge">Aviso activo</span>
-              <strong>Canal oficial del barrio</strong>
-              <div class="notice-meta">Usa este sitio como referencia principal para comunicados, reuniones y coordinación vecinal.</div>
-            </div>
-            <div class="notice-item">
-              <span class="notice-badge">Comunidad</span>
-              <strong>Espacio listo para publicar novedades reales</strong>
-              <div class="notice-meta">Mingas, reuniones, mantenimientos, seguridad, cortes de servicios o eventos barriales.</div>
-            </div>
+    <section id="avisos" class="section-shell">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Lo principal</span>
+            <h2 class="section-title">Avisos que sí importan hoy</h2>
+            <p class="section-sub">Esta sección debe resolver la primera necesidad del vecino: saber si hay algo importante que ver ahora mismo.</p>
           </div>
         </div>
-        <div class="card">
-          <strong style="display:block; margin-bottom:10px; font-size:18px;">Estado actual de avisos</strong>
-          <div class="empty-state">
-            Aún no hay comunicados publicados con fecha y hora. Cuando la directiva empiece a usar el sitio,
-            este bloque debe mostrar solo información real, breve y actualizada.
+        <div class="news-grid">
+          <div class="card tint-card">
+            <div class="notice-list">
+              <div class="notice-item">
+                <span class="notice-badge">Aviso activo</span>
+                <strong>Canal oficial del barrio</strong>
+                <div class="notice-meta">Usa este sitio como referencia central para comunicados, reuniones, convocatorias y coordinación vecinal.</div>
+              </div>
+              <div class="notice-item">
+                <span class="notice-badge">Comunidad</span>
+                <strong>Listo para publicar novedades reales</strong>
+                <div class="notice-meta">Aquí deben aparecer mingas, seguridad, mantenimientos, cortes de servicios, reuniones y anuncios relevantes.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Estado actual de avisos</h3>
+            <div class="status-box">
+              Aún no hay comunicados publicados con fecha y hora. Cuando la directiva empiece a usar el sitio,
+              este bloque debe mostrar solo información concreta, vigente y breve.
+            </div>
           </div>
         </div>
       </div>
@@ -600,59 +871,75 @@
     <section id="accesos">
       <div class="section-head">
         <div>
-          <h2 class="section-title">Accesos rápidos</h2>
-          <p class="section-sub">Las acciones principales deben verse en segundos, sobre todo desde celular.</p>
+          <span class="section-kicker">Acción rápida</span>
+          <h2 class="section-title">Accesos pensados para usar desde celular</h2>
+          <p class="section-sub">Menos clics, menos búsqueda y más claridad. Estas son las puertas principales del sitio.</p>
         </div>
       </div>
       <div class="quick-grid">
         <a class="quick-card" href="#reserva">
           <div class="quick-icon">📅</div>
           <strong>Reservar sala</strong>
-          <p>Envía tu solicitud por WhatsApp con fecha, hora, motivo y cantidad de personas.</p>
+          <p>Envía tu solicitud con fecha, hora, motivo y cantidad de personas desde un solo formulario.</p>
         </a>
         <a class="quick-card" href="#eventos">
           <div class="quick-icon">📣</div>
           <strong>Ver eventos</strong>
-          <p>Consulta reuniones, actividades comunitarias y uso del Parque Libertad.</p>
+          <p>Consulta reuniones comunitarias, actividades del parque y convocatorias del barrio.</p>
         </a>
         <a class="quick-card" href="#info">
           <div class="quick-icon">📍</div>
           <strong>Información útil</strong>
-          <p>Ubicación, reglas básicas de uso y orientación general para vecinos.</p>
+          <p>Ubicación, reglas básicas de uso y contexto rápido para cualquier vecino o visitante.</p>
         </a>
         <a class="quick-card" href="#contacto">
           <div class="quick-icon">💬</div>
           <strong>Contacto</strong>
-          <p>Encuentra el canal principal del barrio para consultas y coordinación.</p>
+          <p>Canales de atención y orientación para coordinar con la directiva del barrio.</p>
         </a>
       </div>
     </section>
 
-    <section id="eventos">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Próximos eventos y reuniones</h2>
-          <p class="section-sub">Si no hay actividades reales programadas, es mejor decirlo claro que llenar espacio.</p>
-        </div>
-      </div>
-      <div class="events-grid">
-        <div class="card">
-          <div class="event-item">
-            <strong>Sin eventos confirmados por ahora</strong>
-            <p>
-              Este espacio debe mostrar reuniones barriales, mingas, campañas comunitarias o actividades del Parque Libertad con fecha y hora reales.
-            </p>
+    <section id="eventos" class="section-shell">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Agenda comunitaria</span>
+            <h2 class="section-title">Próximos eventos y reuniones</h2>
+            <p class="section-sub">Si no hay actividades confirmadas, se dice claro. Si las hay, deben verse ordenadas y fáciles de entender.</p>
           </div>
         </div>
-        <div class="card">
-          <div class="mini-stack">
-            <div class="mini-item">
-              <strong>Qué publicar aquí</strong>
-              <p>Reuniones vecinales, jornadas comunitarias, uso compartido del parque y actividades organizadas por la directiva.</p>
+        <div class="events-grid">
+          <div class="card tint-card">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="time-pill">HOY<span>Sin agenda</span></div>
+                <div>
+                  <span class="event-badge">Estado actual</span>
+                  <strong>No hay eventos confirmados por ahora</strong>
+                  <p>Cuando existan actividades reales, aquí deben mostrarse con fecha, hora, lugar y una acción clara.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="time-pill">FORMATO<span>Recomendado</span></div>
+                <div>
+                  <span class="event-badge">Buenas prácticas</span>
+                  <strong>Publicar lo esencial y nada más</strong>
+                  <p>Fecha, responsable, lugar, instrucciones y si hace falta confirmar asistencia o llevar algo específico.</p>
+                </div>
+              </div>
             </div>
-            <div class="mini-item">
-              <strong>Formato recomendado</strong>
-              <p>Fecha, hora, lugar, responsable y una instrucción clara: asistir, confirmar o llevar algo específico.</p>
+          </div>
+          <div class="card">
+            <div class="mini-stack">
+              <div class="mini-item">
+                <strong>Qué sí va aquí</strong>
+                <p>Reuniones vecinales, mingas, actividades del Parque Libertad, campañas comunitarias y encuentros organizados por la directiva.</p>
+              </div>
+              <div class="mini-item">
+                <strong>Qué no conviene hacer</strong>
+                <p>Llenar esta zona con texto genérico. Si no hay agenda, mejor mostrar un estado limpio y honesto.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -662,56 +949,58 @@
     <section id="reserva">
       <div class="section-head">
         <div>
-          <h2 class="section-title">Reserva de la sala comunal</h2>
-          <p class="section-sub">Un flujo simple y claro: revisar reglas, llenar datos y abrir WhatsApp con el mensaje listo.</p>
+          <span class="section-kicker">Sala comunal</span>
+          <h2 class="section-title">Reserva clara, sin pasos confusos</h2>
+          <p class="section-sub">La reserva no se procesa dentro de la web. El sitio ordena la solicitud y la envía por WhatsApp para revisión de la directiva.</p>
         </div>
       </div>
 
       <div class="reserve-grid">
-        <div class="card">
-          <strong style="display:block; margin-bottom:14px; font-size:18px;">Antes de solicitar</strong>
+        <div class="reserve-panel">
+          <h3>Antes de solicitar</h3>
           <div class="rule-list">
             <div class="rule-item">
               <strong>1. La reserva no es automática</strong>
-              <p>Enviar el mensaje no confirma la fecha. La directiva revisa disponibilidad y responde por WhatsApp.</p>
+              <p>Enviar el mensaje no confirma la fecha. La directiva revisa la disponibilidad y responde por WhatsApp.</p>
             </div>
             <div class="rule-item">
-              <strong>2. Comparte datos completos</strong>
-              <p>Nombre, teléfono, fecha, hora, motivo y cantidad de personas ayudan a responder más rápido.</p>
+              <strong>2. Completa bien tus datos</strong>
+              <p>Nombre, teléfono, fecha, hora, motivo y número de asistentes ayudan a responder más rápido y mejor.</p>
             </div>
             <div class="rule-item">
-              <strong>3. Aclara el tipo de actividad</strong>
-              <p>Indica si es reunión vecinal, evento familiar, capacitación u otra actividad comunitaria.</p>
+              <strong>3. Describe la actividad</strong>
+              <p>Indica si se trata de reunión vecinal, evento familiar, capacitación o una actividad comunitaria.</p>
             </div>
           </div>
 
-          <strong style="display:block; margin:20px 0 12px; font-size:18px;">Cómo funciona</strong>
+          <h3 style="margin-top:20px;">Cómo funciona</h3>
           <div class="steps">
             <div class="step">
               <div class="step-num">1</div>
               <div>
                 <strong>Llena el formulario</strong>
-                <p>Completa la información básica de tu solicitud.</p>
+                <p>Completa la solicitud con información básica y concreta.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">2</div>
               <div>
                 <strong>Se abre WhatsApp</strong>
-                <p>El sitio arma el mensaje automáticamente para que no tengas que escribir todo desde cero.</p>
+                <p>La web arma el mensaje automáticamente para que no tengas que redactarlo desde cero.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">3</div>
               <div>
                 <strong>Esperas confirmación</strong>
-                <p>La coordinación final depende de la respuesta de la directiva del barrio.</p>
+                <p>La coordinación final depende de la disponibilidad y de la respuesta de la directiva.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card tint-card">
+          <h3>Enviar solicitud</h3>
           <form id="reserveForm">
             <div class="field-grid">
               <div>
@@ -753,7 +1042,7 @@
               <textarea id="reason" name="reason" placeholder="Ej. reunión barrial, cumpleaños, capacitación o evento comunitario"></textarea>
             </div>
             <div class="note">
-              La web no guarda reservas ni pagos. Solo genera el mensaje y abre WhatsApp para enviarlo al número del barrio.
+              La web no guarda reservas ni pagos. Solo prepara el mensaje y abre WhatsApp para enviarlo al número oficial del barrio.
             </div>
             <div class="cta-row">
               <button class="btn primary" type="submit">Abrir WhatsApp con mi solicitud</button>
@@ -764,25 +1053,28 @@
       </div>
     </section>
 
-    <section id="info">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Información útil del barrio</h2>
-          <p class="section-sub">Aquí conviene dejar visibles los datos que más se consultan, sin dar vueltas.</p>
+    <section id="info" class="section-shell">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Referencia rápida</span>
+            <h2 class="section-title">Información útil del barrio</h2>
+            <p class="section-sub">Esto debería responder de inmediato las preguntas más comunes sin obligar a escribir por WhatsApp.</p>
+          </div>
         </div>
-      </div>
-      <div class="info-grid">
-        <div class="card">
-          <strong style="display:block; margin-bottom:8px; font-size:18px;">Ubicación</strong>
-          <p class="muted">Parque Libertad, Bellavista Alto, Cuenca, Ecuador.</p>
-        </div>
-        <div class="card">
-          <strong style="display:block; margin-bottom:8px; font-size:18px;">Uso de la sala</strong>
-          <p class="muted">La sala comunal puede destinarse a reuniones, actividades comunitarias y eventos previamente coordinados.</p>
-        </div>
-        <div class="card">
-          <strong style="display:block; margin-bottom:8px; font-size:18px;">Canal principal</strong>
-          <p class="muted">La atención y confirmación de solicitudes se realiza por WhatsApp con la directiva del barrio.</p>
+        <div class="info-grid">
+          <div class="card info-card">
+            <strong>Ubicación</strong>
+            <p class="muted">Parque Libertad, Bellavista Alto, Cuenca, Ecuador.</p>
+          </div>
+          <div class="card info-card">
+            <strong>Uso de la sala</strong>
+            <p class="muted">La sala comunal está pensada para reuniones, actividades comunitarias y eventos coordinados con anticipación.</p>
+          </div>
+          <div class="card info-card">
+            <strong>Canal principal</strong>
+            <p class="muted">La atención y confirmación de solicitudes se realiza por WhatsApp con la directiva del barrio.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -790,51 +1082,81 @@
     <section id="barrio">
       <div class="section-head">
         <div>
+          <span class="section-kicker">Contexto</span>
           <h2 class="section-title">Sobre Bellavista Alto</h2>
-          <p class="section-sub">Una breve presentación basta. La prioridad del sitio debe ser utilidad, no texto institucional largo.</p>
+          <p class="section-sub">La presentación del barrio debe ser breve. La web gana más cuando sirve que cuando se alarga.</p>
         </div>
       </div>
       <div class="about-grid">
         <div class="card">
-          <strong style="display:block; margin-bottom:10px; font-size:18px;">Punto de encuentro</strong>
-          <p class="muted">
-            Bellavista Alto tiene como referencia principal al Parque Libertad, espacio de reunión y vida comunitaria del barrio.
-          </p>
+          <h3>Punto de encuentro</h3>
+          <p class="muted">Bellavista Alto tiene como referencia principal al Parque Libertad, espacio de reunión y vida comunitaria del barrio.</p>
         </div>
         <div class="card">
-          <strong style="display:block; margin-bottom:10px; font-size:18px;">Objetivo del sitio</strong>
-          <p class="muted">
-            Centralizar avisos, facilitar la coordinación vecinal y hacer más simple la solicitud de uso de la sala comunal.
-          </p>
+          <h3>Objetivo del sitio</h3>
+          <p class="muted">Centralizar avisos, facilitar la coordinación vecinal y hacer más simple la solicitud de uso de la sala comunal.</p>
         </div>
       </div>
     </section>
 
-    <section id="contacto">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Contacto</h2>
-          <p class="section-sub">Aquí deben mostrarse solo datos reales y vigentes. Si algo no existe todavía, es mejor completarlo antes de publicar.</p>
+    <section id="contacto" class="section-shell">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Atención</span>
+            <h2 class="section-title">Contacto y canal oficial</h2>
+            <p class="section-sub">Esta parte debe inspirar confianza. Lo ideal es mostrar datos reales, vigentes y con responsable visible.</p>
+          </div>
         </div>
-      </div>
-      <div class="contact-grid">
-        <div class="card">
-          <strong style="display:block; margin-bottom:12px; font-size:18px;">Canales del barrio</strong>
-          <div class="faq-list">
-            <div class="faq-item">
-              <strong>WhatsApp principal</strong>
-              <p>+593 99 999 9999</p>
+        <div class="contact-grid">
+          <div class="card tint-card">
+            <h3>Canales del barrio</h3>
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>WhatsApp principal</strong>
+                <p>+593 99 999 9999</p>
+              </div>
+              <div class="contact-item">
+                <strong>Ubicación</strong>
+                <p>Parque Libertad, Bellavista Alto, Cuenca.</p>
+              </div>
             </div>
-            <div class="faq-item">
-              <strong>Ubicación</strong>
-              <p>Parque Libertad, Bellavista Alto, Cuenca.</p>
+          </div>
+          <div class="card">
+            <h3>Antes de dejarlo final</h3>
+            <div class="status-box">
+              Reemplaza el número de ejemplo por el oficial e idealmente agrega el nombre o cargo de la persona responsable de atender las solicitudes.
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="closing-grid">
+        <div class="closing-cta">
+          <h3>¿Necesitas reservar la sala comunal?</h3>
+          <p>Haz la solicitud por WhatsApp con todos los datos en un solo paso y espera la confirmación de disponibilidad.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#reserva">Ir a la reserva</a>
+            <a class="btn secondary" href="#contacto">Ver contacto</a>
+          </div>
+        </div>
         <div class="card">
-          <strong style="display:block; margin-bottom:12px; font-size:18px;">Qué falta completar</strong>
-          <div class="empty-state">
-            Para que esta sección inspire confianza, conviene reemplazar el número de ejemplo por el oficial e incluir el nombre o cargo del responsable de atención.
+          <h3>Qué haría que esto se vea realmente terminado</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <strong>Foto real del parque o de la sala</strong>
+              <p>Sube muchísimo la percepción de calidad y confianza.</p>
+            </div>
+            <div class="faq-item">
+              <strong>Avisos con fecha real</strong>
+              <p>Con dos o tres publicaciones reales, el sitio deja de parecer maqueta.</p>
+            </div>
+            <div class="faq-item">
+              <strong>WhatsApp oficial</strong>
+              <p>Es el detalle que más cambia la credibilidad del flujo de reserva.</p>
+            </div>
           </div>
         </div>
       </div>
